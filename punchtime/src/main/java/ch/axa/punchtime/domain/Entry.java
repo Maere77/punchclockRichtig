@@ -2,7 +2,6 @@ package ch.axa.punchtime.domain;
 
 import jakarta.persistence.*;
 import lombok.Data;
-import org.antlr.v4.runtime.misc.NotNull;
 
 import java.time.LocalDateTime;
 
@@ -11,13 +10,13 @@ import java.time.LocalDateTime;
 @Data
 public class Entry {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private String id;
 
-    @NotNull
+    @Column(nullable = false)
     private LocalDateTime check_in;
 
-    @NotNull
+    @Column(nullable = false)
     private LocalDateTime check_out;
 
     private String description;
