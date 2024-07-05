@@ -53,8 +53,6 @@ public class Entry {
     @ManyToMany(mappedBy = "entries")
     private Set<Tag> tags = new HashSet<>();
 
-
-
     public String getId() {
         return id;
     }
