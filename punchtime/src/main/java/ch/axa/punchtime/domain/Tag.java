@@ -4,6 +4,9 @@ package ch.axa.punchtime.domain;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.HashSet;
+import java.util.Set;
+
 @Entity
 @Data
 public class Tag {
@@ -17,6 +20,13 @@ public class Tag {
 
     @Column(nullable = false)
     private String description;
+
+    @ManyToMany
+    @JoinTable(
+            name = "tag_category",
+            joinColumns = @JoinColumn(name = "tag_id"),
+            inverseJoinColumns = @JoinColumn(name = "entry_id"))
+    private Set<Entry> entries = new HashSet<>();
 
     public String getId() {
         return id;

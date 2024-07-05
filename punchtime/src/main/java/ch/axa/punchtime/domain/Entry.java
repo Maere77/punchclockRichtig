@@ -11,6 +11,8 @@ import lombok.NoArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDateTime;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "entry")
@@ -44,6 +46,14 @@ public class Entry {
     @NotBlank(message = "Es muss eine Beschreibung haben")
     @NotNull
     private String description;
+
+    @ManyToOne
+    private Category category;
+
+    @ManyToMany(mappedBy = "entries")
+    private Set<Tag> tags = new HashSet<>();
+
+
 
     public String getId() {
         return id;
